@@ -1,5 +1,4 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Render license badge based on user selection
 function renderLicenseBadge(license) {
   switch (license) {
     case 'Apache 2.0 License':
@@ -15,13 +14,12 @@ function renderLicenseBadge(license) {
       return '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)';
 
     default: 
-    return 'No License';
+    return '';
 
   }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+// render link to license webiste based on user selection
 function renderLicenseLink(license) {
   switch (license) {
     case 'Apache 2.0 License':
@@ -37,19 +35,60 @@ function renderLicenseLink(license) {
       return 'https://www.gnu.org/licenses/gpl-3.0';
     
     default: 
-      return 'No link found';
+      return '';
   }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+// create license section for README.md
+function renderLicenseSection(license) {
+  if (license) {
+    return `
+  ## License
+  License information: ${renderLicenseLink(license)}
+  `;
+  }
+  return '';
+}
 
-// TODO: Create a function to generate markdown for README
+// generate markdown for README.md
 function generateMarkdown(data) {
-  return `# ${data.title}
+  return `
+  # ${data.title}
+  ${renderLicenseBadge(data.license)}
+
+
+  ## Description
+  ${data.description}
+
+  ## Table of Contents
+  - [Intallation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
+
+  ## Installation
+  ${data.installation}
+
+  ## Usage
+  ${data.usage}
+
+  ${renderLicenseSection(data.license)}
+
+  ## Contributing
+  ${data.contribution}
+
+  ## Tests
+  ${data.tests}
+
+  ## Questions
+  GitHub Profile: https://github.com/${data.github}
+
+  Email: ${data.email}
 
 `;
 }
 
+// export generateMarkdown function
 module.exports = generateMarkdown;
