@@ -4,9 +4,6 @@ function renderLicenseBadge(license) {
   switch (license) {
     case 'Apache 2.0 License':
       return '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
-
-    case 'Boost Software License 1.0':
-      return '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)';
     
     case 'BSD 3-Clause':
       return '[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)';
@@ -25,7 +22,24 @@ function renderLicenseBadge(license) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  switch (license) {
+    case 'Apache 2.0 License':
+      return 'https://opensource.org/licenses/Apache-2.0';
+
+    case 'BSD 3-Clause':
+      return 'https://opensource.org/licenses/BSD-3-Clause';
+
+    case 'BSD 2-Clause':
+      return 'https://opensource.org/licenses/BSD-2-Clause';
+
+    case 'GNU GPL v3':
+      return 'https://www.gnu.org/licenses/gpl-3.0';
+    
+    default: 
+      return 'No link found';
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
