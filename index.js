@@ -1,4 +1,6 @@
 // TODO: Include packages needed for this application
+const inquirer = require('inquirer');
+
 
 // TODO: Create an array of questions for user input
 const questions = [{
@@ -19,11 +21,11 @@ const questions = [{
     name: 'description',
     message: 'Please enter a description for your project:'
 },
-{
-    type: 'input',
-    name: 'tableOfContents',
-    message: 'Please create a table of contents:',
-},
+// {
+//     type: 'input',
+//     name: 'tableOfContents',
+//     message: 'Please create a table of contents:',
+// },
 {
     type: 'input',
     name: 'installation',
@@ -51,10 +53,10 @@ const questions = [{
     }
 },
 {
-    type: 'checkbox',
-    name: 'liscence',
+    type: 'list',
+    name: 'licence',
     message: 'Select the license(s) you will use for your project:',
-    choices: ['Apache', 'Boost', 'BSD', 'Creative Commons', 'Eclipse', 'GNU', 'IBM', 'ISC', 'MIT', 'Mozilla']
+    choices: ['Apache 2.0 License', 'Boost Software License 1.0', 'BSD 3-Clause', 'BSD 2-Clause', 'GNU GPL v3']
 },
 {
     type: 'input',
@@ -98,7 +100,15 @@ const questions = [{
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    return inquirer
+        .prompt(questions)
+        .then(data => {
+            console.log(data);
+        })
+}
 
 // Function call to initialize app
 init();
+
+
