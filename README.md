@@ -17,7 +17,7 @@ This application also serves as a submission to an assignment that tests student
 - Run "npm install" in root of project to get the necessary node modules.
 
 ## Usage Instructions:
-- Run "npm index.js" in root of project.
+- Run "node index.js" in root of project.
 - Enter information when prompted.
 - Find generated README.md File in "dist" directory.
 
